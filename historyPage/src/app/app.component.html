@@ -1,0 +1,94 @@
+ <mat-toolbar>
+    <span><b>HISTORY</b></span>
+  </mat-toolbar>
+
+  <div class = "container">
+    <div style = "margin-top: 10px;">
+      <mat-form-field appearance="standard">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="SNo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> SNo </th>
+              <td mat-cell *matCellDef="let row"> {{row.sno}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name </th>
+              <td mat-cell *matCellDef="let row"> {{row.userName}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="amt_invested">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+              <td mat-cell *matCellDef="let row"> {{row.amountInvested | currency}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="MarketGrowth">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Growth </th>
+              <td mat-cell *matCellDef="let row"> {{row.marketGrowth}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="dividends">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dividends </th>
+              <td mat-cell *matCellDef="let row"> {{row.dividends}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="sis">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> SIS Income Portfolios </th>
+              <td mat-cell *matCellDef="let row"> {{row.sisIncomePortfolios}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="fee">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Fee </th>
+              <td mat-cell *matCellDef="let row"> {{row.fee}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="time_y">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Time Period (Years)</th>
+              <td mat-cell *matCellDef="let row"> {{row.timePeriod}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="gross_amt">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Gross Amount </th>
+              <td mat-cell *matCellDef="let row"> {{row.grossAmount | currency}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="retirementIncome">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Retirement Income (Year)</th>
+              <td mat-cell *matCellDef="let row"> {{row.retirementIncome | currency}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Added On </th>
+              <td mat-cell *matCellDef="let row"> {{row.addedOn | date}} </td>
+            </ng-container>
+
+
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row"> 
+              <button (click)= "deleteIllustration(row.sno)" mat-icon-button color = "warn">
+                <mat-icon>delete</mat-icon>
+              </button> </td>
+          </ng-container>
+          
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+
+      
+    </div>
+  </div>

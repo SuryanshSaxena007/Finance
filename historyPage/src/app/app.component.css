@@ -1,0 +1,22 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  th {
+    color: white;
+    background-color: rgb(149, 149, 177);
+    border: 1px solid rgb(149, 149, 177);
+  }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
